@@ -1,5 +1,9 @@
-export interface SpanQuery {
+export interface Query {
   limit: number;
+  query: SpanQuery;
+}
+
+interface SpanQuery {
   relation: ConditionRelation;
   conditions: Condition[];
 }
@@ -22,4 +26,26 @@ interface BaseCondition {
   operator: 'equals' | 'greaterThan' | 'lessThan' | 'isTrue' | 'isFalse';
   value?: string | number;
   subQuery?: SpanQuery;
+}
+
+export interface SpanPreview {
+  spanId: string;
+  operationName: string;
+  startTime: string;
+  duration: number;
+}
+
+export interface Span extends SpanPreview {
+  parentSpanId: string;
+  tags: SpanTag[];
+  logs: SpanLog[];
+}
+
+interface SpanTag {
+  key: string;
+  value: string;
+}
+
+interface SpanLog extends SpanTag {
+  timestamp: string;
 }
