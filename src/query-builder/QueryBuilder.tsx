@@ -49,7 +49,7 @@ export const QueryBuilder: React.FC = () => {
       />
       <ButtonsContainer>
         <Button filled>Run Query</Button>
-        <Button>Clear</Button>
+        <Button onClick={() => setQuery(initialQuery)}>Reset</Button>
       </ButtonsContainer>
     </Section>
   );
