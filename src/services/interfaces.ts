@@ -30,13 +30,13 @@ interface BaseCondition {
 
 export interface SpanPreview {
   spanId: string;
+  parentSpanId: string;
   operationName: string;
   startTime: string;
   duration: number;
 }
 
 export interface Span extends SpanPreview {
-  parentSpanId: string;
   tags: SpanTag[];
   logs: SpanLog[];
 }
