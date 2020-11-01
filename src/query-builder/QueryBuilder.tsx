@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import { Button } from './Button';
+import { Button } from '../common/Button';
 import { QueryResultsTable } from './QueryResultsTable';
 import { ResultLimitSelect } from './ResultLimitSelect';
 import { RequestState, SelectedSpan } from './interfaces';
