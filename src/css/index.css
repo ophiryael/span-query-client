@@ -1,7 +1,7 @@
 @import './normalizer.css';
 
 body {
-  margin: 2rem;
+  margin: 2rem 4rem;
   background-color: #162225;
   font-family: 'Roboto', sans-serif;
 }
