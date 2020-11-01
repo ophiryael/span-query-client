@@ -8,8 +8,8 @@ const OptionButton = styled('button')<Pick<Props, 'isSelected'>>`
   outline: none;
   font-size: 0.8rem;
   ${({ isSelected }) => `
-    border: ${isSelected ? '1px solid #23bfb3' : '1px solid #115169'};
-    color: ${isSelected ? '#fff' : '#115169'};
+    border: ${isSelected ? '1px solid #23bfb3' : '1px solid #0b96cb'};
+    color: ${isSelected ? '#fff' : '#0b96cb'};
     background-color: ${isSelected ? '#23bfb3' : 'transparent'};
   `}
 `;
