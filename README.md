@@ -9,6 +9,7 @@ yarn start
 
 ```
 REACT_APP_API_BASE_URL=http://localhost:5000
+REACT_APP_API_DELAY=1000
 ```
 
 ### TODO
