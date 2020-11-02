@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Button } from '../common/Button';
 import { QueryResults } from './QueryResults';
 import { ResultLimitSelect } from './ResultLimitSelect';
-import { RequestState, SelectedSpan } from './interfaces';
+import { Query, SpanPreview } from '../services/interfaces';
+import { RequestState, SelectedSpanState } from './interfaces';
 import { getSpansByQuery, getSpanById } from '../services/spans';
-import { Query, Span, SpanPreview } from '../services/interfaces';
 
 const Section = styled('section')`
   width: 60rem;
@@ -46,7 +46,7 @@ const initialQuery: Query = {
 
 export const QueryBuilder: React.FC = () => {
   const [query, setQuery] = useState<Query>(initialQuery);
-  const [selectedSpan, setSelectedSpan] = useState<SelectedSpan<Span>>({ status: 'idle' });
+  const [selectedSpan, setSelectedSpan] = useState<SelectedSpanState>({ status: 'idle' });
   const [results, setResults] = useState<RequestState<SpanPreview[]>>({ status: 'idle' });
 
   const handleResultLimitChange = (limit: number): void => {

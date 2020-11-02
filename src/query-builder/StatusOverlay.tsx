@@ -27,9 +27,10 @@ interface Props {
   error?: string;
   isLoading: boolean;
   children: React.ReactNode;
+  className?: string;
 }
 
-export const StatusOverlay: React.FC<Props> = ({ error, isLoading, children }) => {
+export const StatusOverlay: React.FC<Props> = ({ error, isLoading, children, className }) => {
   let statusContent: React.ReactNode = null;
   if (isLoading) {
     statusContent = <Spinner />;
@@ -38,8 +39,8 @@ export const StatusOverlay: React.FC<Props> = ({ error, isLoading, children }) =
   }
 
   return (
-    <Container>
-      <StatusContainer>{statusContent}</StatusContainer>
+    <Container {...(className && { className })}>
+      {statusContent && <StatusContainer>{statusContent}</StatusContainer>}
       {children}
     </Container>
   );
