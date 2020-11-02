@@ -7,6 +7,6 @@ export async function getSpansByQuery(query: Query): Promise<SpanPreview[]> {
 }
 
 export async function getSpanById(id: string): Promise<Span> {
-  const res = await serverApi.post(`spans/${id}`);
+  const res = await serverApi.get(`spans/${id}`);
   return res.data.span;
 }
