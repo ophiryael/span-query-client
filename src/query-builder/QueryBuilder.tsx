@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { Button } from '../common/Button';
-import { QueryResultsTable } from './QueryResultsTable';
+import { QueryResults } from './QueryResults';
 import { ResultLimitSelect } from './ResultLimitSelect';
 import { RequestState, SelectedSpan } from './interfaces';
 import { getSpansByQuery, getSpanById } from '../services/spans';
 import { Query, Span, SpanPreview } from '../services/interfaces';
 
 const Section = styled('section')`
-  display: flex;
-  flex-direction: column;
+  width: 60rem;
   margin: 0.5rem 0;
 `;
 
 const ButtonsContainer = styled('div')`
-  align-self: flex-end;
+  text-align: right;
+  margin: 2rem 0;
 
   & > button:first-child {
     margin-right: 1rem;
@@ -92,7 +92,7 @@ export const QueryBuilder: React.FC = () => {
         </Button>
         <Button onClick={() => setQuery(initialQuery)}>Reset</Button>
       </ButtonsContainer>
-      <QueryResultsTable results={results} selectedSpan={selectedSpan} fetchSelectedSpan={fetchSelectedSpan} />
+      <QueryResults results={results} selectedSpan={selectedSpan} fetchSelectedSpan={fetchSelectedSpan} />
     </Section>
   );
 };
