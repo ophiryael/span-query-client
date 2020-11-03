@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import { Button } from '../common/Button';
+import { QueryLevel } from './QueryLevel';
 import { QueryResults } from './QueryResults';
 import { ResultLimitSelect } from './ResultLimitSelect';
 import { Query, SpanPreview } from '../services/interfaces';
@@ -14,7 +16,7 @@ const Section = styled('section')`
 
 const ButtonsContainer = styled('div')`
   text-align: right;
-  margin: 2rem 0;
+  margin: 1rem 0 2rem;
 
   & > button:first-child {
     margin-right: 1rem;
@@ -26,15 +28,18 @@ const maxResultLimits = [5, 10, 15, 20];
 const initialQuery: Query = {
   limit: 10,
   query: {
+    _levelId: uuidv4(),
     relation: 'or',
     conditions: [
       {
+        _conditionId: uuidv4(),
         type: 'tag',
         field: 'resource.type',
         operator: 'equals',
         value: 'http',
       },
       {
+        _conditionId: uuidv4(),
         type: 'span',
         field: 'duration',
         operator: 'greaterThan',
@@ -81,6 +86,7 @@ export const QueryBuilder: React.FC = () => {
 
   return (
     <Section>
+      <QueryLevel queryLevel={query.query} setQuery={setQuery} isFirstLevel />
       <ResultLimitSelect
         resultLimits={maxResultLimits}
         selectedLimit={query.limit}
