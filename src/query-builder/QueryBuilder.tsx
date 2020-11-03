@@ -26,7 +26,7 @@ const maxResultLimits = [5, 10, 15, 20];
 const initialQuery: Query = {
   limit: 10,
   query: {
-    relation: 'and',
+    relation: 'or',
     conditions: [
       {
         type: 'tag',
@@ -37,7 +37,7 @@ const initialQuery: Query = {
       {
         type: 'span',
         field: 'duration',
-        operator: 'lessThan',
+        operator: 'greaterThan',
         value: 1000,
       },
     ],
