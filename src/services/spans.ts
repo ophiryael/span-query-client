@@ -1,4 +1,4 @@
-import { serverApi } from './api-instance';
+import { serverApi } from '../utils/api-instance';
 import { Query, SpanPreview, Span } from './interfaces';
 
 export async function getSpansByQuery(query: Query): Promise<SpanPreview[]> {

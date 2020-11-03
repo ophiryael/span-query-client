@@ -3,14 +3,15 @@ export interface Query {
   query: SpanQuery;
 }
 
-interface SpanQuery {
+export interface SpanQuery {
+  _levelId?: string;
   relation: ConditionRelation;
   conditions: Condition[];
 }
 
-type ConditionRelation = 'and' | 'or';
+export type ConditionRelation = 'and' | 'or';
 
-type Condition = SpanCondition | TagOrLogCondition;
+export type Condition = SpanCondition | TagOrLogCondition;
 
 interface SpanCondition extends BaseCondition {
   type: 'span';
@@ -23,10 +24,13 @@ interface TagOrLogCondition extends BaseCondition {
 }
 
 interface BaseCondition {
-  operator: 'equals' | 'greaterThan' | 'lessThan' | 'isTrue' | 'isFalse';
+  _conditionId?: string;
+  operator: ConditionOperator;
   value?: string | number;
   subQuery?: SpanQuery;
 }
+
+export type ConditionOperator = 'equals' | 'greaterThan' | 'lessThan' | 'isTrue' | 'isFalse';
 
 export interface SpanPreview {
   spanId: string;
