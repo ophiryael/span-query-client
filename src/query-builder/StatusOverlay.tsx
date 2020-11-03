@@ -17,7 +17,7 @@ const StatusContainer = styled('div')`
   transform: translate(-50%, -50%);
 `;
 
-const ErrorText = styled('div')`
+const Text = styled('div')`
   color: #1d2f31;
   font-size: 1.4rem;
   white-space: nowrap;
@@ -28,14 +28,17 @@ interface Props {
   isLoading: boolean;
   children: React.ReactNode;
   className?: string;
+  showNoResults?: boolean;
 }
 
-export const StatusOverlay: React.FC<Props> = ({ error, isLoading, children, className }) => {
+export const StatusOverlay: React.FC<Props> = ({ error, isLoading, children, showNoResults, className }) => {
   let statusContent: React.ReactNode = null;
   if (isLoading) {
     statusContent = <Spinner />;
   } else if (error) {
-    statusContent = <ErrorText>{error}</ErrorText>;
+    statusContent = <Text>{error}</Text>;
+  } else if (showNoResults) {
+    statusContent = <Text>No results found</Text>;
   }
 
   return (

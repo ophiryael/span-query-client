@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { Modal } from '../common/Modal';
 import { Table } from '../common/Table';
 import { SpanDetails } from './SpanDetails';
 import { StatusOverlay } from './StatusOverlay';
 import { SpanPreview } from '../services/interfaces';
 import { RequestState, SelectedSpanState } from './interfaces';
-
-const NoResultsText = styled('tr')`
-  padding: 1rem;
-`;
 
 interface Props {
   results: RequestState<SpanPreview[]>;
@@ -29,7 +24,11 @@ export const QueryResults: React.FC<Props> = ({ results, selectedSpan, fetchSele
 
   return (
     <>
-      <StatusOverlay isLoading={results.status === 'loading'} error={results.error}>
+      <StatusOverlay
+        isLoading={results.status === 'loading'}
+        error={results.error}
+        showNoResults={results.data?.length === 0}
+      >
         <Table>
           <thead>
             <tr>
@@ -39,7 +38,6 @@ export const QueryResults: React.FC<Props> = ({ results, selectedSpan, fetchSele
             </tr>
           </thead>
           <tbody>
-            {results.data && results.data.length === 0 && <NoResultsText>No results found</NoResultsText>}
             {results.data?.map(res => (
               <tr key={res.spanId} onClick={() => handleRowClick(res.spanId)}>
                 <td>{res.spanId}</td>
