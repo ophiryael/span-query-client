@@ -7,11 +7,11 @@ import { ConditionBuilder } from './ConditionBuilder';
 import { Condition as ICondition, ConditionRelation, Query } from '../services/interfaces';
 
 const Container = styled('div')`
-  margin: 1rem 0 0 1rem;
+  margin: 1.4rem 0 0 1.4rem;
 `;
 
 const ButtonsContainer = styled('div')`
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 
   & > button:not(:last-child) {
     margin-right: 0.5rem;
@@ -19,7 +19,7 @@ const ButtonsContainer = styled('div')`
 `;
 
 const ActionButton = styled(Button)`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 0.25rem 0.5rem;
 `;
 
