@@ -1,6 +1,7 @@
 import React from 'react';
 import { cloneDeep } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
+import { Dictionary } from './interfaces';
 import { Query, SpanQuery, Condition, ConditionRelation, ConditionOperator } from '../services/interfaces';
 
 type QueryUpdater = React.Dispatch<React.SetStateAction<Query>>;
@@ -76,10 +77,6 @@ export function removeCondition(queryUpdater: QueryUpdater, levelId: string, con
   });
 }
 
-interface Dictionary<T> {
-  [key: string]: T;
-}
-
 export function updateCondition(
   queryUpdater: QueryUpdater,
   levelId: string,
@@ -105,7 +102,7 @@ function updateConditionFields(condition: Condition, updatedFields: Dictionary<s
       condition.operator = value as ConditionOperator;
       condition.value = getValueByOperator(condition.operator, condition.value);
     } else if (field === 'value') {
-      condition.value = getValueByOperator(condition.operator, condition.value as string);
+      condition.value = getValueByOperator(condition.operator, value as string);
     }
   }
 }
