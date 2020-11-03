@@ -15,3 +15,4 @@ REACT_APP_API_DELAY=1000
 ### TODO
 
 - Cache single span requests
+- Fix folder structure and separate component domains
