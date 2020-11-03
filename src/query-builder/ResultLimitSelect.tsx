@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ResultLimitOption } from './ResultLimitOption';
+import { OptionButton } from '../common/OptionButton';
 
 const Container = styled('div')`
+  margin-top: 2rem;
+  
   & > button:not(:last-child) {
     margin-right: 1rem;
   }
@@ -17,9 +19,9 @@ interface Props {
 export const ResultLimitSelect: React.FC<Props> = ({ resultLimits, selectedLimit, onChange }) => (
   <Container>
     {resultLimits.map(limit => (
-      <ResultLimitOption key={limit} isSelected={limit === selectedLimit} onClick={() => onChange(limit)}>
+      <OptionButton key={limit} isSelected={limit === selectedLimit} onClick={() => onChange(limit)}>
         Last {limit}
-      </ResultLimitOption>
+      </OptionButton>
     ))}
   </Container>
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const OptionButton = styled('button')<Pick<Props, 'isSelected'>>`
+const StyledButton = styled('button')<Pick<Props, 'isSelected'>>`
   cursor: pointer;
   padding: 0.5rem 1rem;
   border-radius: 10px;
@@ -20,8 +20,8 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const ResultLimitOption: React.FC<Props> = ({ isSelected, onClick, children }) => (
-  <OptionButton isSelected={isSelected} onClick={onClick}>
+export const OptionButton: React.FC<Props> = ({ isSelected, onClick, children }) => (
+  <StyledButton isSelected={isSelected} onClick={onClick}>
     {children}
-  </OptionButton>
+  </StyledButton>
 );
